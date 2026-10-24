@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasaCute | House Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="page-wrapper">
+        <section class="form-card">
+            <div class="heading">
+                <div class="house-icon">🏡</div>
+                <p class="eyebrow">A little home, a big decision</p>
+                <h1>Find your home's value</h1>
+                <p class="subtitle">Tell us a little about the house and we'll estimate its price!</p>
+            </div>
+
+            <form id="prediction-form" action="{{ url_for('predict') }}" method="POST">
+
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="area">Area (sq. ft.)</label>
+                        <input type="number" id="area" name="area" min="1" step="any"
+                               placeholder="e.g. 3000" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="bedrooms">Bedrooms</label>
+                        <input type="number" id="bedrooms" name="bedrooms" min="0" step="1"
+                               placeholder="e.g. 3" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="bathrooms">Bathrooms</label>
+                        <input type="number" id="bathrooms" name="bathrooms" min="0" step="1"
+                               placeholder="e.g. 2" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="stories">Stories</label>
+                        <input type="number" id="stories" name="stories" min="1" step="1"
+                               placeholder="e.g. 2" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="parking">Parking spaces</label>
+                        <input type="number" id="parking" name="parking" min="0" step="1"
+                               placeholder="e.g. 1" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="mainroad">Main road access</label>
+                        <select id="mainroad" name="mainroad" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="guestroom">Guestroom</label>
+                        <select id="guestroom" name="guestroom" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="basement">Basement</label>
+                        <select id="basement" name="basement" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="hotwaterheating">Hot water heating</label>
+                        <select id="hotwaterheating" name="hotwaterheating" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="airconditioning">Air conditioning</label>
+                        <select id="airconditioning" name="airconditioning" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="prefarea">Preferred area</label>
+                        <select id="prefarea" name="prefarea" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="furnishingstatus">Furnishing status</label>
+                        <select id="furnishingstatus" name="furnishingstatus" required>
+                            <option value="" disabled selected>Choose furnishing</option>
+                            <option value="furnished">Furnished</option>
+                            <option value="semi-furnished">Semi-furnished</option>
+                            <option value="unfurnished">Unfurnished</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="predict-button" class="predict-button">
+                    <span>Predict my house price</span>
+                    <span class="button-sparkle">✦</span>
+                </button>
+
+                <p class="tiny-note">Made with a little bit of data magic ✨</p>
+            </form>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
